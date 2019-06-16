@@ -1,196 +1,29 @@
-
-##########creating remote repository##########
-
-In the upper-right corner of my profile BogdanShulga, clicked +, and then clicked New repository.
-Typed a name for my repository "working-repository-2".
-Chose to make the repository public.
-Click Create repository.
-https://github.com/BogdanShulga/working-repository-2
-
-
-##########creating local repository README.txt, .gitignore, first commit##########
-
-bogdan@bogdan-Lenovo-V580c ~/tmp $ mkdir working-repository-2
-bogdan@bogdan-Lenovo-V580c ~/tmp $ cd working-repository-2/
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 $ echo "# working-repository-2" >> README.md
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 $ ls
-README.md
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 $ touch .gitignore # Created by https://www.gitignore.io/api/linux
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 $ ls -a
-.  ..  .gitignore  README.md
-
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 $ git init
-Initialized empty Git repository in /home/bogdan/tmp/working-repository-2/.git/
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 $ git add .gitignore  README.md
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 $ git status
-On branch master
-
-No commits yet
-
-Changes to be committed:
-  (use "git rm --cached <file>..." to unstage)
-
-	new file:   .gitignore
-	new file:   README.md
-
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 $ git commit -m "master: first commit"
-[master (root-commit) be4a6b7] master: first commit
- 2 files changed, 20 insertions(+)
- create mode 100644 .gitignore
- create mode 100644 README.md
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (master) $ git status 
-On branch master
-nothing to commit, working tree clean
+I have created new empty repository on github: https://github.com/BogdanShulga/working-repository-2
+mkdir // created new folder for local repository "working-repository-2"
+echo // created README.md
+touch // created .gitignore with content from https://www.gitignore.io/api/linux
+git init // initialized git repository
+git add // added .gitignore and README.md to the stage area
+git status // saw that I am ready for commit
+git commit -m // made first commit on branch "master"
+git remote add origin // added a git URL as an alias
+git push -u origin master // transmited local branch "master" to the remote branch "master"
+touch // created new empty file text.txt
+git add // added text.txt to the stage area
+git status // saw that I am ready for commit
+git commit -m // made second commit on branch master
+git push -u origin master // transmited local branch to the remote branch
+git checkout -b // created new branch first and switched into it
+nano // modified text.txt
+git add // added text.txt to the stage area
+git status // saw that I am ready for commit
+git commit -m // made first commit on branch "first"
+git push -u origin first // transmited local branch "first" to the remote repository
+git merge master // merged "master" to "first"
+git checkout // switched into "master"
+git merge // merged "first" to "master"
+git push -u origin master // transmited local branch to the remote branch
+added steps.txt to the branch "master" and pushed it
 
 
-##########synchronization and pushing master##########
 
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (master) $ git remote add origin git@github.com:BogdanShulga/working-repository-2.git
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (master) $ git push -u origin master
-Enumerating objects: 4, done.
-Counting objects: 100% (4/4), done.
-Delta compression using up to 4 threads
-Compressing objects: 100% (3/3), done.
-Writing objects: 100% (4/4), 556 bytes | 556.00 KiB/s, done.
-Total 4 (delta 0), reused 0 (delta 0)
-To github.com:BogdanShulga/working-repository-2.git
- * [new branch]      master -> master
-Branch 'master' set up to track remote branch 'master' from 'origin'.
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (master) $ git status
-On branch master
-Your branch is up to date with 'origin/master'.
-
-nothing to commit, working tree clean
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (master) $ ssh -T git@github.com
-Hi BogdanShulga! You've successfully authenticated, but GitHub does not provide shell access.
-
-##########creating new file "text.txt", commit it, pushing master##########
-
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (master) $ touch text.txt
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (master) $ ls -a
-.  ..  .git  .gitignore  README.md  text.txt
-
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (master) $ git status 
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (master) $ git status
-On branch master
-Your branch is up to date with 'origin/master'.
-
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-
-	text.txt
-
-nothing added to commit but untracked files present (use "git add" to track)
-
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (master) $ git add text.txt
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (master) $ git status
-On branch master
-Your branch is up to date with 'origin/master'.
-
-Changes to be committed:
-  (use "git reset HEAD <file>..." to unstage)
-
-	new file:   text.txt
-
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (master) $ git commit -m "master: added new empty file text.txt"
-[master 5faeef7] master: added new empty file text.txt
- 1 file changed, 0 insertions(+), 0 deletions(-)
- create mode 100644 text.txt
-
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (master) $ git push -u origin master
-Enumerating objects: 4, done.
-Counting objects: 100% (4/4), done.
-Delta compression using up to 4 threads
-Compressing objects: 100% (2/2), done.
-Writing objects: 100% (3/3), 335 bytes | 335.00 KiB/s, done.
-Total 3 (delta 0), reused 0 (delta 0)
-To github.com:BogdanShulga/working-repository-2.git
-   be4a6b7..5faeef7  master -> master
-Branch 'master' set up to track remote branch 'master' from 'origin'.
-
-##########creating new branch first, modifying file "text.txt", commit it, pushing first##########
-
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (master) $ git checkout -b first
-Switched to a new branch 'first'
-
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (first) $ ls -a
-.  ..  .git  .gitignore  README.md  text.txt
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (first) $ git status 
-On branch first
-nothing to commit, working tree clean
-
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (first) $ nano text.txt
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (first) $ cat text.txt 
-Hello! bla bla bla
-
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (first) $ git status 
-On branch first
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
-
-	modified:   text.txt
-
-no changes added to commit (use "git add" and/or "git commit -a")
-
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (first) $ git add text.txt 
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (first) $ git status 
-On branch first
-Changes to be committed:
-  (use "git reset HEAD <file>..." to unstage)
-
-	modified:   text.txt
-
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (first) $ git commit -m "first: modified text.txt"
-[first 493ba21] first: modified text.txt
- 1 file changed, 1 insertion(+)
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (first) $ git push -u origin first
-Enumerating objects: 5, done.
-Counting objects: 100% (5/5), done.
-Delta compression using up to 4 threads
-Compressing objects: 100% (2/2), done.
-Writing objects: 100% (3/3), 279 bytes | 279.00 KiB/s, done.
-Total 3 (delta 1), reused 0 (delta 0)
-remote: Resolving deltas: 100% (1/1), completed with 1 local object.
-remote: 
-remote: Create a pull request for 'first' on GitHub by visiting:
-remote:      https://github.com/BogdanShulga/working-repository-2/pull/new/first
-remote: 
-To github.com:BogdanShulga/working-repository-2.git
- * [new branch]      first -> first
-Branch 'first' set up to track remote branch 'first' from 'origin'.
-
-##########merging master to first,checkout to master, merging first to master, pushing master##########
-
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (first) $ git merge master
-Already up to date.
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (first) $ git checkout master
-Switched to branch 'master'
-Your branch is up to date with 'origin/master'.
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (master) $ git status 
-On branch master
-Your branch is up to date with 'origin/master'.
-
-nothing to commit, working tree clean
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (master) $ git merge first
-Updating 5faeef7..493ba21
-Fast-forward
- text.txt | 1 +
- 1 file changed, 1 insertion(+)
-
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (master) $ cat text.txt
-Hello! bla bla bla
-
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (master) $ git commit -m "master: merged with branch first" # not needed
-On branch master
-Your branch is up to date with 'origin/master'.
-
-nothing to commit, working tree clean
-
-bogdan@bogdan-Lenovo-V580c ~/tmp/working-repository-2 (master) $ git push -u origin master
-Total 0 (delta 0), reused 0 (delta 0)
-To github.com:BogdanShulga/working-repository-2.git
-   5faeef7..493ba21  master -> master
-Branch 'master' set up to track remote branch 'master' from 'origin'.
-
-##########checkout to first, creating steps.txt, commiting it, merging master to first, merging first to master, pushing master##########
